@@ -14,7 +14,7 @@ public class ControlFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static ControlFragment newInstance(String param1, String param2) {
+    public static ControlFragment newInstance() {
         return new ControlFragment();
     }
 
