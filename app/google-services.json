@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "376304639373",
+    "firebase_url": "https://embebidosraspberry.firebaseio.com",
+    "project_id": "embebidosraspberry",
+    "storage_bucket": "embebidosraspberry.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376304639373:android:2ef5f293d8df3eed",
+        "android_client_info": {
+          "package_name": "com.example.embebidosandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376304639373-c314sh34cg8dis49nt476l3i2jmk46h3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMrRAi8HgmtW16G4KMlLRHVOgFGZXg3a4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376304639373:android:6ab9a6847a718f8e",
+        "android_client_info": {
+          "package_name": "smart.house"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376304639373-c314sh34cg8dis49nt476l3i2jmk46h3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMrRAi8HgmtW16G4KMlLRHVOgFGZXg3a4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
