@@ -22,8 +22,7 @@ public class ControlFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        socket sock = new socket();
-        sock.llamada();
+        new socket().execute();
         super.onCreate(savedInstanceState);
     }
 

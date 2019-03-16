@@ -1,14 +1,16 @@
 package smart.house.sockets;
 
+import android.os.AsyncTask;
+
 import java.net.*;
 import java.io.*;
 
-public class socket {
+public class socket extends AsyncTask<Integer, Integer, Integer> {
     public void llamada() {
 
         try {
 
-            Socket echoSocket = new Socket("172.19.54.35", 6969);
+            Socket echoSocket = new Socket("192.168.100.6", 8080);
             //PrintStream out = new PrintStream(echoSocket.getOutputStream());
             //Scanner scanner = new Scanner(System.in);
             PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
@@ -34,5 +36,11 @@ public class socket {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    protected Integer doInBackground(Integer... integers) {
+        llamada();
+        return 0;
     }
 }
