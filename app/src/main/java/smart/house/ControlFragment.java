@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import smart.house.sockets.socket;
+
 public class ControlFragment extends Fragment {
 
 
@@ -20,6 +22,8 @@ public class ControlFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        socket sock = new socket();
+        sock.llamada();
         super.onCreate(savedInstanceState);
     }
 
