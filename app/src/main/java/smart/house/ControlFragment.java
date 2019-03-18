@@ -22,7 +22,7 @@ public class ControlFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        new socket().execute();
+
         super.onCreate(savedInstanceState);
     }
 
@@ -32,8 +32,12 @@ public class ControlFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.control_fragment, container, false);
 
-        ((AppCompatImageView) view.findViewById(R.id.control_fragment__app_compat_imageview))
-                .setImageDrawable(getResources().getDrawable(R.drawable.croquis));
+        socket sock = new socket();
+        sock.execute(getContext(), view.findViewById(R.id.control_fragment__app_compat_imageview));
+
+
+//        ((AppCompatImageView) view.findViewById(R.id.control_fragment__app_compat_imageview))
+//                .setImageDrawable(getResources().getDrawable(R.drawable.croquis));
 
         return view;
     }
