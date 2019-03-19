@@ -10,7 +10,7 @@ import static android.content.ContentValues.TAG;
 public class SocketConnection extends AsyncTask<Void, Void, Void> {
 
     public static final String IP = "192.168.100.6";
-    public static final int PORT = 6969;
+    public static final int PORT = 8080;
 
     private static SocketConnection socketConnection;
     private Socket socket;

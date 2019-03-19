@@ -28,9 +28,9 @@ public class DoorsUpdater extends AsyncTask <Switch, Integer, String> {
             dataOutputStream.write("OK".getBytes());
 
             byte[] fromServer = new byte[1024];
-            dataInputStream.read(fromServer);
+            int size = dataInputStream.read(fromServer);
             state = new String(fromServer);
-
+            Log.i(TAG, "Tamaño de bytes = " + size);
             Log.i(TAG, "getDoorsState: " +  state);
 
             return state;
