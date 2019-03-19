@@ -5,9 +5,17 @@
       tools:context=".MainActivity">
 
     <item
+        android:id="@+id/toolbar_menu_item_camera"
+        android:orderInCategory="300"
+        android:title="User"
+        android:icon="@drawable/ic_camera"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/toolbar_menu_item_information"
         android:orderInCategory="300"
         android:title="User"
         android:icon="@drawable/ic_information"
         app:showAsAction="ifRoom"/>
+
 </menu>

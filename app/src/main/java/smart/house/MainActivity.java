@@ -1,12 +1,16 @@
 package smart.house;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import java.io.IOException;
+
+import smart.house.sockets.SocketConnection;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .add(R.id.main_fragment, ControlFragment.newInstance())
                 .commit();
+
+        SocketConnection.getInstance();
     }
 
     @Override
@@ -42,6 +48,23 @@ public class MainActivity extends AppCompatActivity {
         //inflate menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try {
+                    SocketConnection.getInstance().getSocket().close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        };
     }
 
     @Override
@@ -59,13 +82,20 @@ public class MainActivity extends AppCompatActivity {
                         .replace(R.id.main_fragment, InfoFragment.newInstance())
                         .addToBackStack(null)
                         .commit();
+            } break;
 
-                return true;
-            }
+            case R.id.toolbar_menu_item_camera: {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_fragment, PictureFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
+            } break;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     @Override
