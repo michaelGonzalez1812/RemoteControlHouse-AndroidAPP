@@ -30,7 +30,7 @@ public class ControlFragment extends Fragment{
 
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        new LightUpdater().execute(new Light("Light1", isChecked));
+                        new LightUpdater().execute(new Light("LS", isChecked));
                     }
                 });
 
@@ -39,7 +39,7 @@ public class ControlFragment extends Fragment{
 
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        new LightUpdater().execute(new Light("Light2", isChecked));
+                        new LightUpdater().execute(new Light("LC", isChecked));
                     }
                 });
 
@@ -48,7 +48,7 @@ public class ControlFragment extends Fragment{
 
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        new LightUpdater().execute(new Light("Light3", isChecked));
+                        new LightUpdater().execute(new Light("CA", isChecked));
                     }
                 });
 
@@ -57,7 +57,7 @@ public class ControlFragment extends Fragment{
 
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        new LightUpdater().execute(new Light("Light4", isChecked));
+                        new LightUpdater().execute(new Light("CB", isChecked));
                     }
                 });
 
@@ -66,7 +66,7 @@ public class ControlFragment extends Fragment{
 
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        new LightUpdater().execute(new Light("Light5", isChecked));
+                        new LightUpdater().execute(new Light("LB", isChecked));
                     }
                 });
 
@@ -81,12 +81,18 @@ public class ControlFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.control_fragment, container, false);
+        final View view = inflater.inflate(R.layout.control_fragment, container, false);
 
         view.findViewById(R.id.control_fragment_update_doors_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DoorsUpdater().execute();
+                new DoorsUpdater().execute(
+                        (Switch) view.findViewById(R.id.control_fragment_switch_door1),
+                        (Switch) view.findViewById(R.id.control_fragment_switch_door2),
+                        (Switch) view.findViewById(R.id.control_fragment_switch_door3),
+                        (Switch) view.findViewById(R.id.control_fragment_switch_door4),
+                        (Switch) view.findViewById(R.id.control_fragment_switch_door5)
+                );
             }
         });
 

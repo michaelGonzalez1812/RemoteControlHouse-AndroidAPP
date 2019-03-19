@@ -1,11 +1,14 @@
 package smart.house.sockets;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
 import smart.house.Model.Light;
+
+import static android.content.ContentValues.TAG;
 
 public class LightUpdater extends AsyncTask <Light,Integer, Integer> {
 
@@ -15,16 +18,17 @@ public class LightUpdater extends AsyncTask <Light,Integer, Integer> {
     private DataOutputStream dataOutputStream;
 
     private void updateLightState() {
-        String fromServer = "";
-        String fromUser = "";
-
         try {
             dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
-            //TODO: Agregar aqui el protocolo para acatualizar el valor de las luces
-            fromServer = dataInputStream.readUTF();
-            dataOutputStream.writeUTF(fromUser);
+            String msg = (light.isOn() ? "1" : "0") + light.getName();
+            dataOutputStream.write(msg.getBytes());
+
+            byte[] fromServer = new byte[1024];
+            dataInputStream.read(fromServer);
+
+            Log.i(TAG, "updateLightState: " +  new String(fromServer));
         }
         catch (Exception e) {
             e.printStackTrace();

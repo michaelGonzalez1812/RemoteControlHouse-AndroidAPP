@@ -18,7 +18,7 @@ public class Light {
         this.name = name;
     }
 
-    public boolean isValue() {
+    public boolean isOn() {
         return value;
     }
 

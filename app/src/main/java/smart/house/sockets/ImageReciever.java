@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.support.v7.widget.AppCompatImageView;
 
 import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,6 +17,7 @@ import java.net.Socket;
 public class ImageReciever extends AsyncTask <Object, Integer, Bitmap> {
 
     private DataInputStream dataInputStream;
+    private DataOutputStream dataOutputStream;
     private Socket socket;
     private Context context;
     private AppCompatImageView imageView;
@@ -27,6 +30,9 @@ public class ImageReciever extends AsyncTask <Object, Integer, Bitmap> {
         FileOutputStream fileOutputStream;
         try {
             dataInputStream = new DataInputStream(socket.getInputStream());
+            dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
+            dataOutputStream.write("PHT".getBytes());
 
             fileOutputStream = context.openFileOutput(IMAGE_NAME, context.MODE_PRIVATE);
             byte[] readData = new byte[1024];
